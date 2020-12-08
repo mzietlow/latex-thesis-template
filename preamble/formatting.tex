@@ -1,0 +1,12 @@
+\usepackage{geometry}           % Paket für Änderung der Seitenränder
+\usepackage{setspace}           % Paket für Zeilenabstand 
+\usepackage{microtype}
+
+\usepackage{subcaption}         % Replacement for subfig package which is broken
+\usepackage{url}                % Required \url{}
+
+\usepackage{etoolbox}           % make authblk work with silence package:
+\makeatletter
+\robustify\@latex@warning@no@line{}
+\makeatother
+\usepackage{authblk}

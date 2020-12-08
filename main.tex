@@ -1,0 +1,125 @@
+% !TEX TS-program = lualatex
+% !TEX encoding = UTF-8 Unicode
+
+% Ignored warnings
+\RequirePackage{silence}
+\WarningFilter{<the respective package>}{<the ignored text>}
+
+\documentclass[11pt,oneside,numbers=noenddot,a4paper,titlepage,abstract]{scrartcl}
+% debugging
+% \usepackage{lua-visual-debug}   % Visualize spacing around text and objects
+% \usepackage{endfloat}           % Move all floats/images etc. into backmatter
+% wondering how to fix obscure errors? try preceding \protect
+
+% Language-Encoding und Font
+\input{preamble/encoding-and-language.tex}
+
+% Citation, Verweise
+\input{preamble/references-and-citation.tex}
+\addbibresource{BibLaTex/citation.bib}
+
+% Fonts
+\input{preamble/fonts-and-symbols.tex}
+
+% Scientific Packages
+\input{preamble/scientific.tex}
+
+% Formatting
+\input{preamble/formatting.tex}
+
+% Fileinsertion
+\usepackage{pdfpages}           % Inserting PDFs
+
+% Graphics, Tables, Colors
+\input{preamble/color-graphics-tables.tex}
+\graphicspath{ {./figures/} }
+
+
+% Placeholder Text
+\usepackage{blindtext}          % I like it better than lorem ipsum
+\usepackage{kantlipsum}         % 20% cooler than blindtext
+
+\usepackage[textwidth=15mm]{todonotes} % Insert von Todos - [disable]
+\setlength{\marginparwidth}{20mm} % For todonotes
+
+
+
+%%%% <Workarounds> %%%%
+% Fix für unbekannten Fehler
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+
+% stopping Floats with a \FloatBarrier. Subsections not included!
+%\usepackage[section]{placeins}
+
+% fancyhdr und KOMA-Script Klassen sollten nicht gemeinsam genutzt werden
+% ich habe noch keine Zeit für einen Fix gefunden. scrhack ist ein quickfix.
+% \usepackage{scrhack}
+
+% Custom Commands
+\input{preamble/custom-commands.tex}
+% Provides:
+% \namedlabel for \ref of description-items
+% \fref for idk what
+% \parref for referencing paragraphs
+% \defref for referencing math-definitons
+% \invdefref like defref but inverted
+% \begin{conditions} for describing params/variables in a math equation 
+
+
+% Document Dimensions
+\spacing{1.25}
+\geometry{a4paper,margin=20mm, bottom=30mm, footskip=10mm}
+\raggedbottom{}
+
+% Subsection numbering depth
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+% Metadaten %
+\title{\LaTeX{} Template}
+\subtitle{Optional Subtitle}
+\author[]{Malte Zietlow}
+\affil[]{
+  Department of Computer Science \\
+  Nordakademie \\
+  Köllner Chaussee 11\\ 
+  25337 Elmshorn}
+\affil[]{\textit{\{malte.zietlow\}@nordakademie.de}}
+
+\date{\today}
+\makeglossaries{}             % makeglossaries <document-root ohne .tex> per cmd
+
+\begin{document}
+\input{Structure/GlossarMetadaten}
+
+%%%% Frontmatter %%%%
+\maketitle
+\input{Structure/01_Frontmatter/Abstract.tex}
+
+% TOC and lists of figures/tables/glossaries
+{\hypersetup{hidelinks}
+  \tableofcontents
+  \begingroup
+  \listoffigures
+  \let\clearpage\relax
+  \listoftables
+  \printglossaries{}
+  \listoftodos{}
+  \endgroup
+}
+
+%%%% Mainmatter %%%%
+\input{Structure/02_Mainmatter/Introduction.tex}
+\input{Structure/02_Mainmatter/Conclusion.tex}
+
+%%%% Backmatter %%%%
+{
+  \hypersetup{hidelinks}
+  \printbibliography{}
+}
+\appendix
+\input{Structure/03_Backmatter/Appendices.tex}
+
+%%%% General Todos: %%%%
+
+\end{document}
