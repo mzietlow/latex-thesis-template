@@ -5,7 +5,16 @@
 \RequirePackage{silence}
 \WarningFilter{<the respective package>}{<the ignored text>}
 
-\documentclass[11pt,oneside,numbers=noenddot,a4paper,titlepage,abstract]{scrartcl}
+\documentclass[
+  11pt, % Font size
+  a4paper, % format
+  numbers=noenddot, % 1.2 in TOC instead of 1.2.
+  headsepline, % line between header and content
+  listof=totoc,bibliography=totoc, % show list of figures/tables/etc in TOC
+  % appendixprefix, % Show structure information (i.e. Appendix A) above chapters
+  % openany, % Don't require chapters to start with an odd page number
+  ]{scrbook}
+
 % debugging
 % \usepackage{lua-visual-debug}   % Visualize spacing around text and objects
 % \usepackage{endfloat}           % Move all floats/images etc. into backmatter
@@ -38,6 +47,9 @@
 \usepackage[textwidth=15mm]{todonotes} % Insert von Todos - [disable]
 \setlength{\marginparwidth}{20mm} % For todonotes
 
+% Citation, Verweise
+\input{preamble/references-and-citation.tex}
+\addbibresource{BibLaTex/citation.bib}
 
 
 %%%% <Workarounds> %%%%
@@ -89,8 +101,9 @@
 \input{Structure/GlossarMetadaten}
 
 %%%% Frontmatter %%%%
+\frontmatter{}
 \maketitle
-\input{Structure/01_Frontmatter/Abstract.tex}
+
 
 % TOC and lists of figures/tables/glossaries
 {\hypersetup{hidelinks}
@@ -105,6 +118,7 @@
 }
 
 %%%% Mainmatter %%%%
+\mainmatter{}
 \input{Structure/02_Mainmatter/Introduction.tex}
 \input{Structure/02_Mainmatter/Conclusion.tex}
 
@@ -113,7 +127,8 @@
   \hypersetup{hidelinks}
   \printbibliography{}
 }
-\appendix
+
+\appendix{}
 \input{Structure/03_Backmatter/Appendices.tex}
 
 %%%% General Todos: %%%%
