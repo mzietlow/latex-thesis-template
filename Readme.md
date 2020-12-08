@@ -1,4 +1,4 @@
-# Transferleistung-LaTeX
+# LaTeX-Thesis
 Dieses Markdown-File ist Schmu. Ich werde, irgendwann, versuchen es nach LaTeX
 zu migrieren - und vor allem zu vervollständigen.
 
