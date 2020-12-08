@@ -1,5 +1,10 @@
 % Citation, Verweise
 \usepackage[style=ieee,backend=biber]{biblatex}
+
+\usepackage{nameref}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage[acronym]{glossaries}		% \gls{<golssary-entry>}
+\setacronymstyle{long-short}
 \usepackage{hyperref}           % Verlinkungen im Dokument
 \hypersetup{
  colorlinks,
@@ -7,8 +12,4 @@
  citecolor={blue!50!black},
  urlcolor={blue!80!black}
 }
-\usepackage{nameref}
-\usepackage[inline,shortlabels]{enumitem}
-\usepackage[acronym]{glossaries}		% \gls{<golssary-entry>}
-\setacronymstyle{long-short}
 \usepackage[nameinlink]{cleveref}
