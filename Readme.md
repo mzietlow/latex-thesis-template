@@ -1,6 +1,6 @@
+# Für Erweiterungen siehe: https://github.com/mzietlow/latex-extensions
+
 # LaTeX-Thesis
-Dieses Markdown-File ist Schmu. Ich werde, irgendwann, versuchen es nach LaTeX
-zu migrieren - und vor allem zu vervollständigen.
 
 Installation:
 1. texlive installieren (am besten im Hintergrund laufen lassen) -> https://www.tug.org/texlive/acquire-netinstall.html -> install-tl-windows.exe
